@@ -3,7 +3,24 @@
 #define LIST_H
 #include <cstddef>
 
-template <class Type>
+template <typename Type>
+class NODE
+{
+	//You must declare these initial values to create a node.  Data is the value of the information stored within the node.
+	//Next and Previous are values pointing to Areas within the Heap memory
+	Type Data;
+	NODE *next;
+	NODE *previous;
+
+	NODE()
+	{
+		//the constructor of the Node class assigns Null values to the pointers and the Data type
+		Data = NULL;
+		next = nullptr;
+		previous = nullptr;
+	}
+};
+template <typename Type>
 class List
 {
 public:
@@ -41,29 +58,35 @@ public:
 
 		
 	}
-	void find(Type Value)
+	NODE<Type>* find(Type Value)
 	{
 		NODE * current = Head;
-		while (current != nullptr && current->Data != Value)
-		{
-			current = current->next;
-		}
+		while (current != NULL)
+			if (current->Data == Value)
+			{
+				return current;
+			}
+			else
+			{
+				current = current->next;
+			}
+		return current;
 	
 	}
 	void Delete(Type value)
 	{
-		NODE * Delete_Node = find(value);
-		if (*Head == Delete_Node)
+		NODE<Type> * Delete_Node = find(value);
+		if (Head == Delete_Node)
 		{
 			Delete_Node->next->previous = nullptr;
 			Head = Delete_Node->next;
 		}
-		else if (*Tail == Delete_Node)
+		else if (Tail == Delete_Node)
 		{
 			Delete_Node->previous->next = nullptr;
 			Tail = Delete_Node->previous;
 		}
-		else if (*Tail == Delete_Node && *Head == Delete_Node)
+		else if (Tail == Delete_Node && Head == Delete_Node)
 		{
 			Head = nullptr;
 			Tail = nullptr;
@@ -77,9 +100,9 @@ public:
 	}
 
 	void display() {
-		NODE* pointer;
+		NODE<Type>* pointer;
 		pointer = Head;
-		while (pointer != nullptr)
+		while (pointer != NULL)
 		{
 			std::cout << pointer->Data << " ";
 			pointer = pointer->next;
@@ -89,25 +112,10 @@ public:
 
 private:
 
-	struct NODE
-	{
-		//You must declare these initial values to create a node.  Data is the value of the information stored within the node.
-		//Next and Previous are values pointing to Areas within the Heap memory
-		Type Data;
-		NODE *next;
-		NODE *previous;
 
-		NODE()
-		{
-			//the constructor of the Node class assigns Null values to the pointers and the Data type
-			Data = NULL;
-			next = nullptr;
-			previous = nullptr;
-		}
-	};
 	//Head and tails are pointers to an Area of Memory to show the beginning of the list and the end of the list.
-	NODE* Head;
-	NODE* Tail;
+	NODE<Type>* Head;
+	NODE<Type>* Tail;
 
 };
 #endif
