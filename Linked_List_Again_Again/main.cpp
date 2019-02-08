@@ -10,11 +10,19 @@ int main()
 	My_List.Insert(3);
 	My_List.Insert(4);
 	My_List.display();
-	My_List.Delete(3);
+	system("pause");
+	My_List.Remove_NODE(3);
+	system("pause");
 	My_List.display();
-	My_List.Delete(4);
+	system("pause");
+	My_List.Remove_NODE(4);
+	system("pause");
 	My_List.display();
-	My_List.Delete(1);
+	system("pause");
+	My_List.Remove_NODE(1);
+	system("pause");
 	My_List.display();
-	My_List.Delete(2);
+	system("pause");
+	My_List.Remove_NODE(2);
+	system("pause");
 }
