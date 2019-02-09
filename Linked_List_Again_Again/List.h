@@ -16,7 +16,7 @@ struct  NODE
 	NODE()
 	{
 		//the constructor of the Node class assigns Null values to the pointers and the Data type
-		Data = NULL;
+		Data/* = NULL*/;
 		next = nullptr;
 		previous = nullptr;
 	}
@@ -30,24 +30,26 @@ public:
 	{
 		Head = new NODE<Type>;
 		Tail = new  NODE<Type>;
-		Head->Data = NULL;
+		//Head->Data = NULL;
 		Head->previous = nullptr;
 		Head->next = Tail;
-		Tail->Data = NULL;
+		//Tail->Data = NULL;
 		Tail->next = nullptr;
 		Tail->previous = Head;
 	}
 	~List()
 	{
-		/* [Current Work in Progress]
-		NODE<Type>* pointer = Tail;
-		NODE<Type>* current = pointer;
-		while (pointer->previous!= nullptr)
-		{
+		NODE<Type>* temp = Head;
+		NODE<Type>* Remove_Node=nullptr;
 
-			delete pointer;
-		}*/
-		
+		while (temp != nullptr)
+		{
+			Remove_Node = temp;
+			temp = temp->next;
+			Remove_NODE(Remove_Node->Data);
+		}
+		delete Head;
+		delete Tail;
 	}
 	//Insert function uses a pointer to the NODE object and Insert()Method contains the type of data being passed into the list
 	void Insert(Type Data)
@@ -81,7 +83,7 @@ public:
 			current = current->next;
 			if (current==Tail)
 			{
-				std::cout << "That Value does not exists within the List!" << std::endl;
+				std::cout << "\nThat Value does not exists within the List!" << std::endl;
 				return nullptr;
 			}
 		}
@@ -92,7 +94,7 @@ public:
 		NODE<Type> * Delete_Node=this->find(value);
 		if (Delete_Node==nullptr||Delete_Node==Tail||Delete_Node==Head)
 		{
-			std::cout << "Cannot Delete Node.  Invalid request!" << std::endl;
+			std::cout << "\nCannot Delete Node.  Invalid request!" << std::endl;
 		}
 		else
 		{
