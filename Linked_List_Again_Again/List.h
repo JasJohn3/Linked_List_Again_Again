@@ -39,7 +39,15 @@ public:
 	}
 	~List()
 	{
+		/* [Current Work in Progress]
+		NODE<Type>* pointer = Tail;
+		NODE<Type>* current = pointer;
+		while (pointer->previous!= nullptr)
+		{
 
+			delete pointer;
+		}*/
+		
 	}
 	//Insert function uses a pointer to the NODE object and Insert()Method contains the type of data being passed into the list
 	void Insert(Type Data)
