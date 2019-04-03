@@ -23,7 +23,8 @@ int main()
 		std::cout << "2.) Display the values stored in the list" << std::endl;
 		std::cout << "3.) Find a value in the list" << std::endl;
 		std::cout << "4.) Delete a value inside of the List" << std::endl;
-		std::cout << "5.) Exit" << std::endl;
+		std::cout << "5.) Insertion Sort List" << std::endl;
+		std::cout << "6.) Exit" << std::endl;
 
 		int menu_select;
 		std::cin >> menu_select;
@@ -59,6 +60,14 @@ int main()
 			system("pause");
 			break;
 		case 5:
+			std::cout << "Sorting List: " << std::flush;
+			User_List.insertion_sort();
+			std::cout<<"/nSort Results: "<<std::flush;
+			User_List.display();
+			std::cout << "Returning to main menu..." << std::endl;
+			system("pause");
+			break;
+		case 6:
 			exit(0);
 		default:
 			std::cout << "Invalid information entered." << std::endl;

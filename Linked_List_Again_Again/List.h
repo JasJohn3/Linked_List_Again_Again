@@ -68,6 +68,30 @@ public:
 		delete Head;
 		delete Tail;
 	}
+
+	void insertion_sort()
+	{
+		NODE<Type>* current = Head->next;
+		
+
+		while (current->next != Tail)
+		{
+			NODE<Type> * compare = current->next;
+			 if (current->Data > compare->Data)
+			{
+				NODE<Type>* temp = compare->next;
+				compare->next = current;
+				compare->previous = current->previous;
+				current->previous->next = compare;
+				current->previous = compare;
+				current->next = temp;
+				temp->previous = current;
+				current = Head;
+			}
+
+			current = current->next;
+		}
+	}
 	//Insert function uses a pointer to the NODE object and Insert()Method contains the type of data being passed into the list
 	void Insert(Type Data)
 	{
@@ -130,8 +154,6 @@ public:
 			Delete_Node->next->previous = Delete_Node->previous;
 			Delete_Node->previous->next = Delete_Node->next;
 		}
-
-
 	}
 	//A simple display function that iterates through our list until a null pointer is found indicating the end of the list.
 	void display() {
