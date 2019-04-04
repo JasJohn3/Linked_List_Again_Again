@@ -212,6 +212,8 @@ public:
 				std::cout << "\n\nEnd of List!" << std::endl << std::endl;
 			}
 		}
+		
+		/*
 		//Searches through the list from the tail until there is a nullptr value indicating the beginning of the list
 		//displays the Node->data value each time.
 		while (tail_pointer != Head)
@@ -224,6 +226,7 @@ public:
 				std::cout << "\n\nEnd of List!" << std::endl<<std::endl;
 			}
 		}
+		*/
 		
 	}
 

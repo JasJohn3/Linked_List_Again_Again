@@ -49,7 +49,7 @@ int main()
 			system("pause");
 			break;
 		case 2:
-			std::cout << "This is all of the Data stored in your list: " << std::endl;
+			std::cout << "This is all of the Data stored in your list: " << std::endl<<std::endl;
 			User_List.display();
 			std::cout << "Returning to main menu..." << std::endl;
 			system("pause");
@@ -69,17 +69,15 @@ int main()
 			system("pause");
 			break;
 		case 5:
-			std::cout << "Sorting List: " << std::flush;
+			std::cout << "Sorting List: " << std::endl << std::endl;
 			User_List.insertion_sort();
-			std::cout<<"/nSort Results: "<<std::flush;
 			User_List.display();
 			std::cout << "Returning to main menu..." << std::endl;
 			system("pause");
 			break;
 		case 6:
-			std::cout << "Sorting List: " << std::flush;
+			std::cout << "Sorting List: " << std::endl << std::endl;
 			User_List.Selection_Sort();
-			std::cout << "/nSort Results: " << std::flush;
 			User_List.display();
 			std::cout << "Returning to main menu..." << std::endl;
 			system("pause");
