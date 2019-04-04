@@ -116,6 +116,26 @@ public:
 
 		
 	}
+	void Selection_Sort()
+	{
+		NODE<Type>* Sorted = Head->next;
+		NODE<Type>* Minimum = Sorted->next;
+		Type Min = Minimum->Data;
+		while (Sorted != Tail)
+		{
+			while (Minimum != Tail)
+			{
+				if (Min > Minimum->Data)
+				{
+					Min = Minimum->Data;
+				}
+				Minimum = Minimum->next;
+			}
+			Sorted = Sorted->next;
+		}
+		
+		
+	}
 	//This function searches for values contained within our list
 	//NODE<Type>* is a pointer to a NODE
 	//Type Value is the data we want to find in our list
