@@ -1,7 +1,8 @@
 #include "List.h"
 #include <iostream>
 #include <string>
-
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 void Automated_int_Test();
 void Automated_char_Test();
@@ -19,7 +20,7 @@ int main()
 		std::cout << "\t\tWelcome to the User Created List test suite!" << std::endl;
 		std::cout << "This testing suite allows you to add integer values into a list." << std::endl;
 		std::cout << "Please follow the Menu selection to begin adding values into your list." << std::endl;
-		std::cout << "1.) Insert a value into the List" << std::endl;
+		std::cout << "1.) Enter a size for a list of random numbers" << std::endl;
 		std::cout << "2.) Display the values stored in the list" << std::endl;
 		std::cout << "3.) Find a value in the list" << std::endl;
 		std::cout << "4.) Delete a value inside of the List" << std::endl;
@@ -34,14 +35,21 @@ int main()
 		{
 		case 1:
 			system("cls");
-			std::cout << "Please enter a value to insert: " << std::flush;
+			std::cout << "Please enter a size for your list: " << std::flush;
 			std::cin >> User_Data;
-			User_List.Insert(User_Data);
+			/* initialize random seed: */
+			srand(time(NULL));
+			for (int i = 0; i < User_Data; ++i)
+			{
+				/*Insert random number into the list*/
+				User_List.Insert(rand() % User_Data + 1);
+			}
+			
 			std::cout << "Returning to main menu..." << std::endl;
 			system("pause");
 			break;
 		case 2:
-			std::cout << "This is all of the Data stored in your list: " << std::flush;
+			std::cout << "This is all of the Data stored in your list: " << std::endl;
 			User_List.display();
 			std::cout << "Returning to main menu..." << std::endl;
 			system("pause");

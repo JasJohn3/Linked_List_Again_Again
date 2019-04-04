@@ -119,22 +119,42 @@ public:
 	void Selection_Sort()
 	{
 		NODE<Type>* Sorted = Head->next;
-		NODE<Type>* Minimum = Sorted->next;
-		Type Min = Minimum->Data;
+		NODE<Type>* Minimum =nullptr;
+		Type swap;
 		while (Sorted != Tail)
 		{
-			while (Minimum != Tail)
+			NODE<Type>* Min_Iterator = Sorted->next;
+			Type Min = Sorted->Data;;
+			while (Min_Iterator != Tail)
 			{
-				if (Min > Minimum->Data)
+				if (Min > Min_Iterator->Data)
 				{
-					Min = Minimum->Data;
+					Min = Min_Iterator->Data;
+					Minimum = Min_Iterator;
 				}
-				Minimum = Minimum->next;
+				Min_Iterator = Min_Iterator->next;
+				if (Minimum == nullptr)
+				{
+					Minimum = Sorted;
+				}
+			}
+			if (Sorted->next == Tail)
+			{
+				break;
+			}
+			if (Minimum->Data < Sorted->Data)
+			{
+				swap = Sorted->Data;
+				Sorted->Data = Minimum->Data;
+				Minimum->Data = swap;
 			}
 			Sorted = Sorted->next;
 		}
+	}
+	NODE<Type> * Sort_Minimum(NODE<Type>* sorted)
+	{
 		
-		
+		return sorted;
 	}
 	//This function searches for values contained within our list
 	//NODE<Type>* is a pointer to a NODE
@@ -177,23 +197,32 @@ public:
 	}
 	//A simple display function that iterates through our list until a null pointer is found indicating the end of the list.
 	void display() {
-		NODE<Type>* head_pointer=Head;
-		NODE<Type>* tail_pointer = Tail;
+		NODE<Type>* head_pointer=Head->next;
+		NODE<Type>* tail_pointer = Tail->previous;
 		//Searches through the list from the Head until there is a nullptr value indicating the end of the list
 		//displays the Node->data value each time.
-		while (head_pointer != nullptr)
+		
+		while (head_pointer != Tail)
 		{
 			std::cout << head_pointer->Data << " ";
 			//change the head_pointer to the next Node in our list.
 			head_pointer = head_pointer->next;
+			if (head_pointer->next==Tail)
+			{
+				std::cout << "\n\nEnd of List!" << std::endl << std::endl;
+			}
 		}
 		//Searches through the list from the tail until there is a nullptr value indicating the beginning of the list
 		//displays the Node->data value each time.
-		while (tail_pointer != nullptr)
+		while (tail_pointer != Head)
 		{
 			std::cout << tail_pointer->Data << " ";
 			//change the tail_pointer to the previous Node in our list.
 			tail_pointer = tail_pointer->previous;
+			if (tail_pointer->previous == Head)
+			{
+				std::cout << "\n\nEnd of List!" << std::endl<<std::endl;
+			}
 		}
 		
 	}
