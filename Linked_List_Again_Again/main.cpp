@@ -50,8 +50,16 @@ int main()
 			auto duration = (stop - start);
 			std::cout << "Time taken by function: "<< duration << " microseconds" << std::endl;
 			auto N_Calculation = duration;
+			if (N_Calculation <= 1)
+			{
+				total_time = N_Calculation + N_Calculation;
+			}
+			else
+			{
+				total_time = N_Calculation * N_Calculation;
+			}
 			//Because This operation is an O(N) operation, we can estimate the total O(N) for our sorting algorithms and perform a comparison.
-			total_time = N_Calculation * N_Calculation;
+			
 			system("pause");
 			system("cls");
 			std::cout << "The Estimated O(N) for both sorting algorithms in microseconds: " << total_time << std::endl;
@@ -93,8 +101,7 @@ int main()
 			User_List.display();
 			system("pause");
 			system("cls");
-			auto N_Calculation = duration;
-			auto Insertion_N = N_Calculation * N_Calculation;
+			auto Insertion_N = duration;
 			if (Insertion_N > total_time)
 			{
 				std::cout << "The Algorithm performed less efficiently than O(N*N)!" << std::endl;
@@ -125,7 +132,6 @@ int main()
 			User_List.display();
 			system("pause");
 			system("cls");
-			auto N_Calculation = duration;
 			auto Selection_N = duration;
 			if (Selection_N > total_time)
 			{
