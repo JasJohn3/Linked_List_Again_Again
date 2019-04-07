@@ -102,6 +102,7 @@ void Automated_int_Test()
 	int_List.Insert(3);
 	int_List.Insert(4);
 	int_List.Insert(5);
+
 	int_List.display();
 	int_List.Remove_NODE(3);
 	int_List.display();
