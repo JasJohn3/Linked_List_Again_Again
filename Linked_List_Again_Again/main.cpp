@@ -50,6 +50,7 @@ int main()
 			auto duration = (stop - start);
 			std::cout << "Time taken by function: "<< duration << " microseconds" << std::endl;
 			auto N_Calculation = duration;
+			//if the operation takes only one microsecond, we add the N values together since you cannot raise a value to the power of 1.
 			if (N_Calculation <= 1)
 			{
 				total_time = N_Calculation + N_Calculation;
