@@ -3,7 +3,7 @@
 #include <string>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
-
+#include <chrono> 
 void Automated_int_Test();
 void Automated_char_Test();
 void Automated_string_Test();
@@ -13,7 +13,7 @@ int main()
 	Automated_int_Test();
 	Automated_char_Test();
 	Automated_string_Test();
-
+	long float total_time;
 	List<int> User_List;
 	while (true)
 	{
@@ -34,20 +34,33 @@ int main()
 		switch (menu_select)
 		{
 		case 1:
+		{
 			system("cls");
 			std::cout << "Please enter a size for your list: " << std::flush;
 			std::cin >> User_Data;
 			/* initialize random seed: */
 			srand(time(NULL));
+			auto start = clock();
 			for (int i = 0; i < User_Data; ++i)
 			{
 				/*Insert random number into the list*/
 				User_List.Insert(rand() % User_Data + 1);
 			}
-			
+			auto stop = clock();
+			auto duration = (stop - start);
+			std::cout << "Time taken by function: "<< duration << " microseconds" << std::endl;
+			auto N_Calculation = duration;
+			//Because This operation is an O(N) operation, we can estimate the total O(N) for our sorting algorithms and perform a comparison.
+			total_time = N_Calculation * N_Calculation;
+			system("pause");
+			system("cls");
+			std::cout << "The Estimated O(N) for both sorting algorithms in microseconds: " << total_time << std::endl;
+			system("pause");
+			system("cls");
 			std::cout << "Returning to main menu..." << std::endl;
 			system("pause");
 			break;
+		}
 		case 2:
 			std::cout << "This is all of the Data stored in your list: " << std::endl<<std::endl;
 			User_List.display();
@@ -69,19 +82,69 @@ int main()
 			system("pause");
 			break;
 		case 5:
+		{
 			std::cout << "Sorting List: " << std::endl << std::endl;
+			auto start = clock();
 			User_List.insertion_sort();
+			auto stop = clock();
+			auto duration = (stop - start);
+			std::cout << "Time taken by function: "
+				<< duration << " microseconds" << std::endl;
 			User_List.display();
+			system("pause");
+			system("cls");
+			auto N_Calculation = duration;
+			auto Insertion_N = N_Calculation * N_Calculation;
+			if (Insertion_N > total_time)
+			{
+				std::cout << "The Algorithm performed less efficiently than O(N*N)!" << std::endl;
+				std::cout << "Esimated Selection Sort Run Time: " << total_time << std::endl;
+				std::cout << "Selection Sort Run Time: " << Insertion_N << std::endl;
+			}
+			else
+			{
+				std::cout << "The Algorithm performed more efficiently than O(N*N)!" << std::endl;
+				std::cout << "Esimated Selection Sort Run Time: " << total_time << std::endl;
+				std::cout << "Selection Sort Run Time: " << Insertion_N << std::endl;
+			}
+			system("pause");
+			system("cls");
 			std::cout << "Returning to main menu..." << std::endl;
 			system("pause");
 			break;
+		}
 		case 6:
+		{
 			std::cout << "Sorting List: " << std::endl << std::endl;
+			auto start = clock();
 			User_List.Selection_Sort();
+			auto stop = clock();
+			auto duration = (stop - start);
+			std::cout << "Time taken by function: "
+				<< duration << " microseconds" << std::endl;
 			User_List.display();
+			system("pause");
+			system("cls");
+			auto N_Calculation = duration;
+			auto Selection_N = duration;
+			if (Selection_N > total_time)
+			{
+				std::cout << "The Algorithm performed less efficiently than O(N*N)!" << std::endl;
+				std::cout << "Esimated Selection Sort Run Time: " << total_time << std::endl;
+				std::cout << "Selection Sort Run Time: " << Selection_N << std::endl;
+			}
+			else
+			{
+				std::cout << "The Algorithm performed more efficiently than O(N*N)!" << std::endl;
+				std::cout << "Esimated Selection Sort Run Time: " << total_time << std::endl;
+				std::cout << "Selection Sort Run Time: " << Selection_N << std::endl;
+			}
+			system("pause");
+			system("cls");
 			std::cout << "Returning to main menu..." << std::endl;
 			system("pause");
 			break;
+		}
 		case 7:
 			exit(0);
 		default:
